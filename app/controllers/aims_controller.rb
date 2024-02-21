@@ -1,6 +1,8 @@
 class AimsController < ApplicationController
   def index
-    @aims = Aim.all
+    byebug
+    @q = Aim.ransack(params[:q])
+    @aims = @q.result.page(params[:page]).per(5)
   end
 
   def show
