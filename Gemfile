@@ -22,11 +22,14 @@ gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 gem "bootsnap", require: false
-
-gem "sassc-rails"
+gem 'ransack'
+gem 'kaminari'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'sass-rails', '>= 3.2'
 
 
 group :development, :test do
+  gem "byebug"
   gem 'rspec-rails', '~> 6.1.0'
   gem 'factory_bot_rails'
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
