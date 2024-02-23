@@ -30,6 +30,7 @@ gem 'jquery-rails'
 
 
 group :development, :test do
+  gem 'faker'
   gem "byebug"
   gem 'rspec-rails', '~> 6.1.0'
   gem 'factory_bot_rails'
