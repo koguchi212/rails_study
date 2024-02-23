@@ -1,3 +1,6 @@
+Aim.all.each do |f|
+    f.destroy
+  end
 10.times do |n|
     Aim.create!(
       title: Faker::ProgrammingLanguage.unique.name,
