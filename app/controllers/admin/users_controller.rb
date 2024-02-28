@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin
 
   def index
     @q = User.ransack(params[:q])
@@ -50,6 +51,10 @@ class Admin::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password)
+  end
+
+  def require_admin
+    redirect_to root_path unless current_user.admin?
   end
 end
 

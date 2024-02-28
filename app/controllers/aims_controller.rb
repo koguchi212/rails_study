@@ -2,7 +2,7 @@ class AimsController < ApplicationController
   before_action :set_aim, only: [:show, :edit, :update, :destroy]
 
   def index
-    @q = Aim.ransack(params[:q])
+    @q = current_user.aims.recent.ransack(params[:q])
     @aims = @q.result.page(params[:page]).per(5)
   end
 
@@ -15,7 +15,7 @@ class AimsController < ApplicationController
   end
 
   def create
-    @aim = Aim.new(aim_params)
+    @aim = current_user.aims.new(aim_params)
     if @aim.save
       flash[:success] = '目標を作成しました'
       redirect_to aims_path
@@ -45,7 +45,7 @@ class AimsController < ApplicationController
   private
 
     def set_aim
-      @aim = Aim.find(params[:id])
+      @aim = current_user.aims.find(params[:id])
     end
 
    def aim_params
