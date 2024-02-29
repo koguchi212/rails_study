@@ -40,4 +40,28 @@ describe 'Aims', type: :system do
       end
     end
   end
+
+  describe '新規作成機能' do
+    let(:login_user) { user_a }
+    before do
+      visit new_aim_path
+      fill_in '目標名', with: aim_title
+      click_button '新規作成'
+    end
+
+    context '新規作成画面でタイトルを入力したとき' do
+      let(:aim_title) { '新規作成のテストを書く' }
+      it '正常に登録される' do
+        expect(page).to have_content '新規作成のテストを書く'
+      end
+    end
+
+    context '新規作成画面でタイトルを入力しなかったとき' do
+      let(:aim_title) { '' }
+      it 'エラーとなる' do
+        expect(page).to have_selector('form[action="/aims"]')
+        expect(page).to have_selector('li', text: "Title can't be blank")                
+      end
+    end
+  end
 end
