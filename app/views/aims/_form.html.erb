@@ -2,22 +2,22 @@
     <%= render "shared/error_messages", model: @aim %>
     <div class="form-group mb-3">
       <%= f.label :title, '目標名', class: 'form-label background-color' %>
-      <%= f.text_field :title, class: 'form-control', readonly: action==='show' %>
+      <%= f.text_field :title, class: 'form-control' %>
     </div>
 
     <div class="form-group mb-3">
       <%= f.label :reason, '理由', class: 'form-label background-color' %>
-      <%= f.text_area :reason, class: 'form-control', readonly: action==='show' %>
+      <%= f.text_area :reason, class: 'form-control' %>
     </div>
   
     <div class="form-group mb-3">
       <%= f.label :advantage, '得られるもの', class: 'form-label background-color' %>
-      <%= f.text_area :advantage, class: 'form-control', readonly: action==='show' %>
+      <%= f.text_area :advantage, class: 'form-control' %>
     </div>
   
     <div class="form-group mb-3">
       <%= f.label :difficulty, '難易度', class: 'form-label background-color' %>
-      <%= f.text_field :difficulty, class: 'form-control', readonly: action==='show' %>
+      <%= f.text_field :difficulty, class: 'form-control' %>
     </div>
   
     <div class="form-group mb-3">
