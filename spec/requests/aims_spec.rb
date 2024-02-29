@@ -92,7 +92,7 @@ RSpec.describe 'Aims', type: :request do
 
       it 'レコードの値が変更されていない' do
         patch "/aims/#{aim1.id}", params: { aim: aim_params }
-        expect(aim1.reload[:title]).to eq 'MyString'
+        expect(aim1.reload[:title]).to eq 'テストを書く'
       end
 
       it '新規作成画面にレンダリングされる' do

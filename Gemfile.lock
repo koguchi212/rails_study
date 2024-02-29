@@ -245,7 +245,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.17.0)
+    selenium-webdriver (4.18.1)
       base64 (~> 0.2)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -290,7 +290,7 @@ DEPENDENCIES
   bootsnap
   bootstrap (~> 5.3.2)
   byebug
-  capybara
+  capybara (~> 3.28)
   debug
   factory_bot_rails
   faker
@@ -305,7 +305,7 @@ DEPENDENCIES
   ransack
   rspec-rails (~> 6.1.0)
   sass-rails (>= 3.2)
-  selenium-webdriver
+  selenium-webdriver (~> 4.8)
   sprockets-rails
   stimulus-rails
   turbo-rails
