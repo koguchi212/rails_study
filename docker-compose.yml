@@ -7,6 +7,7 @@ services:
       - postgres_volume:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: password
+
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 4000 -b '0.0.0.0'"
@@ -21,11 +22,20 @@ services:
     depends_on:
       - db
       - selenium_chrome
+      - mailcatcher
 
   selenium_chrome:
     image: selenium/standalone-chrome-debug
     ports:
       - "4444:4444"
+
+  mailcatcher:
+    image: schickling/mailcatcher
+    container_name: mailcatcher
+    ports:
+      - '1080:1080'
+      - '1025:1025'
+   
 # NEW!! volumeを指定
 volumes:
   postgres_volume:

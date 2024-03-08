@@ -3,7 +3,7 @@ class AimsController < ApplicationController
 
   def index
     @q = current_user.aims.recent.ransack(params[:q])
-    @aims = @q.result.page(params[:page]).per(5)
+    @aims = @q.result(distinct: true).page(params[:page]).per(5)
   end
 
   def show
@@ -17,6 +17,7 @@ class AimsController < ApplicationController
   def create
     @aim = current_user.aims.new(aim_params)
     if @aim.save
+      AimMailer.creation_email(@aim).deliver_now
       flash[:success] = '目標を作成しました'
       redirect_to aims_path
     else
