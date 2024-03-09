@@ -20,7 +20,21 @@
         <%= f.label :difficulty, '難易度', class: 'form-label background-color' %>
         <%= f.text_field :difficulty, class: 'form-control', readonly: action==='show'%>
       </div>
-    
+
+      <div class="form-group mb-3">
+        <%= f.label :image, '画像', class: 'form-label background-color' %>
+        <%= f.file_field :image, class: 'form-control', readonly: action==='show', style: 'max-width: 100%' %>
+      <div>
+
+      <div class="form-group mb-3">
+        <% if action==='show' %>
+        <tr>
+          <th><<%= Aim.human_attribute_name(:image) %></th>
+          <td><%= image_tag @aim.image if @aim.image.attached? %></td>
+        </tr>
+        <% end %>
+      </div>
+
       <div class="form-group mb-3">
         <% if action==='show' %>
           <%= link_to '編集', edit_aim_path(@aim.id), class: 'btn btn-primary' %>

@@ -19,7 +19,7 @@ class AimsController < ApplicationController
     if @aim.save
       AimMailer.creation_email(@aim).deliver_now
       flash[:success] = '目標を作成しました'
-      redirect_to aims_path
+      redirect_to aim_path(@aim.id)
     else
       render 'new', status: :unprocessable_entity
     end
@@ -50,6 +50,6 @@ class AimsController < ApplicationController
     end
 
    def aim_params
-    params.require(:aim).permit(:title, :reason, :advantage, :difficulty)
+    params.require(:aim).permit(:title, :reason, :advantage, :difficulty, :image)
    end
 end
