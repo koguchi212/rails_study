@@ -7,5 +7,8 @@ Rails.application.routes.draw do
     resources :users
   end
   
-  resources :aims
+  resources :aims do
+    post :confirm, action: :confirm_new, on: :new
+    post :import, on: :collection
+  end
 end

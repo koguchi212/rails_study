@@ -48,6 +48,12 @@ class AimsController < ApplicationController
     redirect_to aims_path
   end
 
+  def import
+    current_user.aims.import(params[:file])
+    flash[:success] = '目標を追加しました'
+    redirect_to aims_path
+  end
+
   private
 
     def set_aim

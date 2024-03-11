@@ -22,6 +22,14 @@ class Aim < ApplicationRecord
     end
   end
 
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      aim = new
+      aim.attributes = row.to_hash.slice(*csv_attributes)
+      aim.save!
+    end
+  end
+
   def self.ransackable_attributes(auth_object = nil)
     ["advantage", "created_at", "reason", "title", "updated_at"]
   end

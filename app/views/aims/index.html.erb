@@ -57,5 +57,12 @@
   <div class="d-flex justify-content-end">
     <%= link_to "エクスポート", aims_path(format: :csv), class: 'mb-3 btn btn-primary' %>
   </div>
+
+  <div class="d-flex justify-content-center">
+     <%= form_tag import_aims_path, multipart: true, class: 'mb-3' do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "インポート", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
   <%= paginate @aims %>
 </div>
