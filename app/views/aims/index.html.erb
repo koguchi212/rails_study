@@ -53,5 +53,9 @@
       <% end %>
     </tbody>
   </table>
+
+  <div class="d-flex justify-content-end">
+    <%= link_to "エクスポート", aims_path(format: :csv), class: 'mb-3 btn btn-primary' %>
+  </div>
   <%= paginate @aims %>
 </div>

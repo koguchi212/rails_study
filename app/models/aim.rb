@@ -1,3 +1,5 @@
+require "csv"
+
 class Aim < ApplicationRecord
   validates :title, presence: true
 
@@ -6,6 +8,19 @@ class Aim < ApplicationRecord
   has_one_attached :image
 
   scope :recent, -> { order(created_at: :desc) }
+
+  def self.csv_attributes
+    ["title", "advantage", "reason", "created_at", "updated_at"]
+  end
+
+  def self.generate_csv
+    CSV.generate(headers: true) do |csv|
+      csv << csv_attributes
+      all.each do |aim|
+        csv << csv_attributes.map{ |attr| aim.send(attr) }
+      end
+    end
+  end
 
   def self.ransackable_attributes(auth_object = nil)
     ["advantage", "created_at", "reason", "title", "updated_at"]

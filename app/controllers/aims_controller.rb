@@ -4,6 +4,11 @@ class AimsController < ApplicationController
   def index
     @q = current_user.aims.recent.ransack(params[:q])
     @aims = @q.result(distinct: true).page(params[:page]).per(5)
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @aims.generate_csv, filename: "aims-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
+    end
   end
 
   def show
