@@ -27,9 +27,9 @@
    ```bash
     http://localhost:4000/admin/users
     ```
-8. emailとpasswordを入力
-   seedデータではemail:admin@example.com, password:password
+8. emailとpasswordを入力   
+   seedデータでは`email:admin@example.com, password:password`
 
 ## mailerのチェック
 - 新規作成して、登録したときにメール送信処理を走らせるようにしました
-- (http://localhost:1080)にアクセスすると動作確認できます
+- (http://localhost:1080) にアクセスすると動作確認できます
