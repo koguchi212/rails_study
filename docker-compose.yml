@@ -23,7 +23,7 @@ services:
       - db
       - selenium_chrome
       - mailcatcher
-
+  # system spec用のselenium
   selenium_chrome:
     image: selenium/standalone-chrome-debug
     ports:
